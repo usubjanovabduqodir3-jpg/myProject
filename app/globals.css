@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* 
+ * LingoSphere - Theme: Ko'k (Blue), Qizil (Red), Qora (Black)
+ * Dynamic Light & Dark Mode with seamless transition
+ */
+
+:root {
+  --canvas-bg: #f8fafc;
+  --surface-bg: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --primary-blue: #2563eb;
+  --primary-red: #ef4444;
+  --pure-black: #030712;
+}
+
+.dark, [data-theme="dark"] {
+  --canvas-bg: #030712;
+  --surface-bg: #0b0f19;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #1e293b;
+  --primary-blue: #3b82f6;
+  --primary-red: #f87171;
+  --pure-black: #000000;
+  color-scheme: dark;
+}
+
+html.dark, body.dark, .dark {
+  background-color: #030712 !important;
+  color: #f8fafc;
+}
+
+body {
+  background-color: var(--canvas-bg);
+  color: var(--text-main);
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Audio Wave Pulse Animation */
+@keyframes audioPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.35;
+  }
+}
+
+.animate-audio-pulse {
+  animation: audioPulse 1.4s ease-in-out infinite;
+}
+
+/* Equalizer Bars */
+@keyframes eqBar {
+  0%, 100% {
+    height: 6px;
+  }
+  50% {
+    height: 24px;
+  }
+}
+
+.eq-bar-1 { animation: eqBar 0.8s ease-in-out infinite; }
+.eq-bar-2 { animation: eqBar 0.6s ease-in-out infinite 0.15s; }
+.eq-bar-3 { animation: eqBar 0.9s ease-in-out infinite 0.3s; }
+.eq-bar-4 { animation: eqBar 0.7s ease-in-out infinite 0.2s; }
+
+/* 
+ * Explicit Responsive Media Queries:
+ * 300px, 320px, 330px, 340px, 350px, 360px up to 760px
+ */
+
+@media (max-width: 760px) {
+  .app-container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .grid-language-cards {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+  .vocab-grid {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    gap: 0.875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  html {
+    font-size: 14.5px;
+  }
+  .app-container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .action-btn-compact {
+    padding-left: 0.625rem;
+    padding-right: 0.625rem;
+    font-size: 0.8rem;
+  }
+  .voice-studio-target-word {
+    font-size: 1.75rem;
+    line-height: 2rem;
+  }
+}
+
+@media (max-width: 350px) {
+  html {
+    font-size: 14px;
+  }
+  .nav-brand-title {
+    font-size: 1.05rem;
+  }
+  .voice-mic-circle {
+    width: 4.75rem;
+    height: 4.75rem;
+  }
+}
+
+@media (max-width: 340px) {
+  html {
+    font-size: 13.5px;
+  }
+  .tab-pill-btn {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+  }
+  .voice-mic-circle {
+    width: 4.25rem;
+    height: 4.25rem;
+  }
+}
+
+@media (max-width: 330px) {
+  html {
+    font-size: 13px;
+  }
+  .stat-badge-text {
+    font-size: 0.7rem;
+  }
+  .card-padding-adaptive {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 320px) {
+  html {
+    font-size: 12.5px;
+  }
+  .app-container {
+    padding-left: 0.35rem;
+    padding-right: 0.35rem;
+  }
+  .voice-studio-target-word {
+    font-size: 1.45rem;
+    line-height: 1.75rem;
+  }
+  .btn-responsive-text {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.6rem;
+  }
+}
+
+@media (max-width: 300px) {
+  html {
+    font-size: 12px;
+  }
+  .app-container {
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  .header-actions {
+    gap: 0.25rem;
+  }
+  .voice-mic-circle {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}
